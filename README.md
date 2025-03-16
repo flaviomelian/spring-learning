@@ -22,7 +22,6 @@ El repositorio se organiza de la siguiente manera:
 - 🌿 **Spring Boot** - Simplifica la configuración y desarrollo.
 - 📦 **Spring Data JPA** - Para gestionar la base de datos.
 - 🔗 **Spring Web** - Creación de APIs REST.
-- 🗄 **H2 Database** - Base de datos en memoria para pruebas.
 - 🔧 **Maven** - Para gestionar dependencias y compilación.
 
 ## 🚀 Cómo Ejecutar el Proyecto
