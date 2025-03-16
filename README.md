@@ -1,50 +1,50 @@
-🌱 Spring Learning
+###🌱 Spring Learning
 
-🚀 Un repositorio personal para aprender y experimentar con Spring Boot y su ecosistema.
+##🚀 Un repositorio personal para aprender y experimentar con Spring Boot y su ecosistema.
 
-📌 Objetivo del Proyecto
+##📌 Objetivo del Proyecto
 
-Este repositorio es un espacio de aprendizaje personal, donde practico y pruebo diversas tecnologías del ecosistema Spring.Si alguien más lo encuentra útil, ¡adelante, haz un fork y explora! 😃
+#Este repositorio es un espacio de aprendizaje personal, donde practico y pruebo diversas tecnologías del ecosistema Spring.Si alguien más lo encuentra útil, ¡adelante, haz un fork y explora! 😃
 
-📂 Estructura del Proyecto
+##📂 Estructura del Proyecto
 
-spring-learning/
-│── backend/      # Código fuente con la aplicación Spring Boot
-│── config/       # Configuraciones adicionales del proyecto
-│── resources/    # Archivos estáticos y otros assets
-└── README.md     # Este archivo 😎
+##spring-learning/
+##│── backend/      # Código fuente con la aplicación Spring Boot
+##│── config/       # Configuraciones adicionales del proyecto
+##│── resources/    # Archivos estáticos y otros assets
+##└── README.md     # Este archivo 😎
 
-🛠️ Tecnologías Utilizadas
+##🛠️ Tecnologías Utilizadas
 
-☕ Java 17 - Lenguaje principal del proyecto.
+##☕ Java 17 - Lenguaje principal del proyecto.
 
-🌿 Spring Boot - Simplifica la configuración y desarrollo.
+##🌿 Spring Boot - Simplifica la configuración y desarrollo.
 
-📦 Spring Data JPA - Para gestionar la base de datos.
+##📦 Spring Data JPA - Para gestionar la base de datos.
 
-🔗 Spring Web - Creación de APIs REST.
+##🔗 Spring Web - Creación de APIs REST.
 
-🗄 H2 Database - Base de datos en memoria para pruebas.
+##🗄 H2 Database - Base de datos en memoria para pruebas.
 
-🔧 Maven - Para gestionar dependencias y compilación.
+##🔧 Maven - Para gestionar dependencias y compilación.
 
-🚀 Cómo Ejecutar el Proyecto
+##🚀 Cómo Ejecutar el Proyecto
 
-Clona el repositorio:
+##Clona el repositorio:
 
 git clone https://github.com/flaviomelian/spring-learning.git
 
-Navega al directorio del backend:
+##Navega al directorio del backend:
 
 cd spring-learning/backend
 
-Ejecuta la aplicación con Maven:
+##Ejecuta la aplicación con Maven:
 
 ./mvnw spring-boot:run
 
 Accede a la aplicación en tu navegador:
 
-http://localhost:8080/
+##http://localhost:8080/
 
 📌 Notas Adicionales
 
