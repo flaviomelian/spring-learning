@@ -2,7 +2,7 @@
 
 > 🚀 Un repositorio personal para aprender y experimentar con Spring Boot y su ecosistema.
 
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7-green?style=flat-square&logo=spring)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.3-green?style=flat-square&logo=spring)
 ![Java](https://img.shields.io/badge/Java-17-blue?style=flat-square&logo=java)
 ![License](https://img.shields.io/github/license/flaviomelian/spring-learning)
 
