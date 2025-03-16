@@ -2,7 +2,7 @@
 
 > 🚀 Un repositorio personal para aprender y experimentar con Spring Boot y su ecosistema.
 
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7-green?style=flat-square&logo=spring)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.3-green?style=flat-square&logo=spring)
 ![Java](https://img.shields.io/badge/Java-17-blue?style=flat-square&logo=java)
 ![License](https://img.shields.io/github/license/flaviomelian/spring-learning)
 
@@ -22,7 +22,6 @@ El repositorio se organiza de la siguiente manera:
 - 🌿 **Spring Boot** - Simplifica la configuración y desarrollo.
 - 📦 **Spring Data JPA** - Para gestionar la base de datos.
 - 🔗 **Spring Web** - Creación de APIs REST.
-- 🗄 **H2 Database** - Base de datos en memoria para pruebas.
 - 🔧 **Maven** - Para gestionar dependencias y compilación.
 
 ## 🚀 Cómo Ejecutar el Proyecto
