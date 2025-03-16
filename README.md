@@ -1,64 +1,48 @@
-###🌱 Spring Learning
+# Spring Learning
 
-##🚀 Un repositorio personal para aprender y experimentar con Spring Boot y su ecosistema.
+> 🚀 Un repositorio personal para aprender y experimentar con Spring Boot y su ecosistema.
 
-##📌 Objetivo del Proyecto
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7-green?style=flat-square&logo=spring)
+![Java](https://img.shields.io/badge/Java-17-blue?style=flat-square&logo=java)
+![License](https://img.shields.io/github/license/flaviomelian/spring-learning)
 
-#Este repositorio es un espacio de aprendizaje personal, donde practico y pruebo diversas tecnologías del ecosistema Spring.Si alguien más lo encuentra útil, ¡adelante, haz un fork y explora! 😃
+## 📌 Objetivo del Proyecto
 
-##📂 Estructura del Proyecto
+Este repositorio está dedicado a la práctica y aprendizaje del framework Spring. A través de diversos ejemplos y proyectos, exploraremos las características y funcionalidades que ofrece Spring para el desarrollo de aplicaciones en Java.
 
-##spring-learning/
-##│── backend/      # Código fuente con la aplicación Spring Boot
-##│── config/       # Configuraciones adicionales del proyecto
-##│── resources/    # Archivos estáticos y otros assets
-##└── README.md     # Este archivo 😎
+## 📂 Estructura del Proyecto
 
-##🛠️ Tecnologías Utilizadas
+El repositorio se organiza de la siguiente manera:
 
-##☕ Java 17 - Lenguaje principal del proyecto.
+- **backend/**: Contiene el código fuente relacionado con el servidor y la lógica de negocio implementada con Spring.
 
-##🌿 Spring Boot - Simplifica la configuración y desarrollo.
+## 🛠️ Tecnologías Utilizadas
 
-##📦 Spring Data JPA - Para gestionar la base de datos.
+- ☕ **Java 17** - Lenguaje principal del proyecto.
+- 🌿 **Spring Boot** - Simplifica la configuración y desarrollo.
+- 📦 **Spring Data JPA** - Para gestionar la base de datos.
+- 🔗 **Spring Web** - Creación de APIs REST.
+- 🗄 **H2 Database** - Base de datos en memoria para pruebas.
+- 🔧 **Maven** - Para gestionar dependencias y compilación.
 
-##🔗 Spring Web - Creación de APIs REST.
+## 🚀 Cómo Ejecutar el Proyecto
 
-##🗄 H2 Database - Base de datos en memoria para pruebas.
-
-##🔧 Maven - Para gestionar dependencias y compilación.
-
-##🚀 Cómo Ejecutar el Proyecto
-
-##Clona el repositorio:
-
-git clone https://github.com/flaviomelian/spring-learning.git
-
-##Navega al directorio del backend:
-
-cd spring-learning/backend
-
-##Ejecuta la aplicación con Maven:
-
-./mvnw spring-boot:run
-
-Accede a la aplicación en tu navegador:
-
-##http://localhost:8080/
-
-📌 Notas Adicionales
-
-✅ Este proyecto está en constante evolución a medida que aprendo nuevas funcionalidades.✅ Cualquiera puede hacer un fork y modificarlo según sus necesidades.❌ No hay garantías de que todo funcione perfectamente, ya que es solo un entorno de aprendizaje.
-
-📚 Recursos Útiles
-
-📖 Documentación oficial de Spring
-
-🏗 Guías prácticas de Spring
-
-🎓 Curso gratuito de Spring en Udemy
-
-📜 Licencia
+1. **Clona el repositorio**:
+   ```bash
+   git clone https://github.com/flaviomelian/spring-learning.git
+   ```
+2. **Navega al proyecto**:
+   ```bash
+   cd spring-learning/backend
+   ```
+3. **Ejecutalo desde la terminal o desde el propio IDE si así lo prefieres**
+   ```bash
+   ./mvnw spring-boot:run
+   ```
+4. **Accede desde el navegador**
+  ```bash
+  http://localhost:8080/
+  ```
 
 📝 Este proyecto está bajo la Licencia MIT. Puedes usarlo libremente, pero bajo tu propio riesgo.
 
