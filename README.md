@@ -40,9 +40,9 @@ El repositorio se organiza de la siguiente manera:
    ./mvnw spring-boot:run
    ```
 4. **Accede desde el navegador**
-  ```bash
-  http://localhost:8080/
-  ```
+   ```bash
+   http://localhost:8080/
+   ```
 
 📝 Este proyecto está bajo la Licencia MIT. Puedes usarlo libremente, pero bajo tu propio riesgo.
 
