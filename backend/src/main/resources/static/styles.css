@@ -9,6 +9,11 @@
     width: 100%;
 }
 
+.btn-warning {
+    margin-top: 1%;
+    width: 100%;
+}
+
 h1 {
     margin-top: 5%;
     margin-left: 40%;
@@ -35,6 +40,7 @@ tr:nth-child(odd) {
 
 .update{
     margin-right: 5%;
+    width: 40%;
 }
 
 .delete{

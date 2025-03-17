@@ -2,6 +2,9 @@ package com.flavio.backend.controllers;
 
 import com.flavio.backend.models.Person;
 import com.flavio.backend.repositories.PersonRepository;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -124,13 +127,14 @@ public class BasicAPI {
     }
 
     @GetMapping("/update-person")
-    public String updatePerson(@RequestParam Integer id, @RequestParam String dni, @RequestParam String name, @RequestParam String surnames, @RequestParam int age, @RequestParam String email) {
+    public String updatePerson(@RequestParam Integer id, @RequestParam String dni, @RequestParam String name, 
+                            @RequestParam String surnames, @RequestParam int age, @RequestParam String email) {
         StringBuilder html = new StringBuilder();
         html.append("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">");
         html.append("<link rel=\"stylesheet\" href=\"/styles.css\">");
         html.append("<h1><b>Editar Persona</b></h1>");
         html.append("<div class=\"container\">");
-        html.append("<form id\"updateForm\" action\"/api/update-person\" method=\"post\">");
+        html.append("<form id=\"updateForm\" action=\"/api/update-person\" method=\"post\">"); // Corregido el método
         html.append("<input type=\"hidden\" id=\"id\" name=\"id\" value=\"").append(id).append("\">");
         html.append("<div class=\"form-group\">");
         html.append("<label for=\"dni\">DNI:</label>");
@@ -158,16 +162,27 @@ public class BasicAPI {
         return html.toString();
     }
 
-    @PostMapping("/update-person")
-    public RedirectView update(@RequestParam Integer id, @RequestParam String dni, @RequestParam String name, @RequestParam String surnames, @RequestParam int age, @RequestParam String email) {
-        Person person = personRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid person Id:" + id));
+
+    @PostMapping("/update-person") // Cambiado de @PutMapping a @PostMapping para que funcione con formularios HTML
+    @Transactional
+    public RedirectView update(@RequestParam Integer id, 
+                            @RequestParam String dni, 
+                            @RequestParam String name, 
+                            @RequestParam String surnames, 
+                            @RequestParam int age, 
+                            @RequestParam String email) {
+        Person person = personRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Invalid person ID: " + id));
+
         person.setDNI(dni);
         person.setName(name);
         person.setSurnames(surnames);
         person.setAge(age);
         person.setEmail(email);
-        personRepository.save(person);
-        return new RedirectView("/api/people"); // Redirigir a la lista de personas después de actualizar
+
+        personRepository.save(person); // Guarda la entidad actualizada en la base de datos
+
+        return new RedirectView("/api/people"); // Redirige a la lista de personas después de actualizar
     }
     
 }
