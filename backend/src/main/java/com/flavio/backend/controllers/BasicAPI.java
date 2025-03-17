@@ -1,7 +1,9 @@
 package com.flavio.backend.controllers;
 
 import com.flavio.backend.models.Person;
+import com.flavio.backend.models.User;
 import com.flavio.backend.repositories.PersonRepository;
+import com.flavio.backend.repositories.UserRepository;
 
 import jakarta.transaction.Transactional;
 
@@ -10,14 +12,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
@@ -26,9 +26,39 @@ public class BasicAPI {
 
     @Autowired
     private PersonRepository personRepository;
+    @Autowired
+    private UserRepository userRepository;
+
+    @GetMapping("/")
+    public String index() {
+        StringBuilder html = new StringBuilder();
+        html.append("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">");
+        html.append("<link rel=\"stylesheet\" href=\"/styles.css\">");
+        html.append("<h1><b>Iniciar Sesión</b></h1>");
+        html.append("<div class=\"container\">");
+        html.append("<form action=\"/api/people\" method=\"get\">"); // Cambiado a POST
+        html.append("<div class=\"form-group\">");
+        html.append("<label for=\"user\">Usuario:</label>");
+        html.append("<input type=\"text\" class=\"form-control\" id=\"user\" name=\"user\" required>");
+        html.append("</div>");
+        html.append("<div class=\"form-group\">");
+        html.append("<label for=\"passwd\">Contraseña:</label>");
+        html.append("<input type=\"password\" class=\"form-control\" id=\"passwd\" name=\"passwd\" required>");
+        html.append("</div>");
+        html.append("<button type=\"submit\" class=\"btn btn-primary\">Iniciar sesión</button>");
+        html.append("</form>");
+        html.append("</div>");
+        return html.toString();
+    }
 
     @GetMapping("/people")
-    public String people() {
+    public String people(@RequestParam String user, @RequestParam String passwd) {
+
+        // Verificar las credenciales 
+        User foundUser = userRepository.findByName(user);
+        if (foundUser == null || !foundUser.getPassword().equals(passwd)) 
+            return "redirect:/api/"; // Redirigir al inicio de sesión si las credenciales son incorrectas
+    
         List<Person> personas = personRepository.findAll();
 
         // Construir la tabla HTML con los datos
