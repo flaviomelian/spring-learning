@@ -16,14 +16,16 @@
 
 h1 {
     margin-top: 1%;
-    margin-left: 40%;
+    justify-self: center;
     font-family: arial, sans-serif;
 }
+
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
+
 td, th {
     border: 1px solid #dddddd;
     text-align: left;
@@ -31,11 +33,11 @@ td, th {
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #48acf9;
 }
 
 tr:nth-child(odd) {
-    background-color: #89bee2c8;
+    background-color: #9fd9ffc8;
 }
 
 .update{
