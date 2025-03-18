@@ -5,6 +5,7 @@ import com.flavio.backend.models.User;
 import com.flavio.backend.repositories.PersonRepository;
 import com.flavio.backend.repositories.UserRepository;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
-
 import java.util.List;
 
 
@@ -52,13 +52,17 @@ public class BasicAPI {
     }
 
     @GetMapping("/people")
-    public String people(@RequestParam String user, @RequestParam String passwd) {
+    public String people(@RequestParam String user, @RequestParam String passwd, HttpSession session) {
 
         // Verificar las credenciales 
         User foundUser = userRepository.findByName(user);
         if (foundUser == null || !foundUser.getPassword().equals(passwd)) 
             return "redirect:/api/"; // Redirigir al inicio de sesión si las credenciales son incorrectas
     
+        // Guardar las credenciales en la sesión
+        session.setAttribute("user", user); // Store user in session
+        session.setAttribute("passwd", passwd);
+        
         List<Person> personas = personRepository.findAll();
 
         // Construir la tabla HTML con los datos
@@ -90,7 +94,7 @@ public class BasicAPI {
             html.append("</tr>");
         }
 
-        html.append("</table><button class='btn btn-primary w-100' onclick='window.location.href=\"/api/add-person\"'>Agregar</button></div>");
+        html.append("</table><form action=\"/api/add-person\" method=\"get\"><button class='btn btn-primary w-100' onclick='window.location.href=\"/api/add-person\"'>Agregar</button></form></div>");
         html.append("<script>")
             .append("function deletePerson(id) {")
             .append("  fetch('/api/person/' + id, { method: 'DELETE' })")
@@ -117,7 +121,7 @@ public class BasicAPI {
         html.append("<link rel=\"stylesheet\" href=\"/styles.css\">");
         html.append("<h1><b>Agregar Persona</b></h1>");
         html.append("<div class=\"container\">");
-        html.append("<form action=\"/api/add-person\" method=\"post\">");
+        html.append("<form action=\"/api/add-person-to-database\" method=\"post\">");
         html.append("<div class=\"form-group\">");
         html.append("<label for=\"dni\">DNI:</label>");
         html.append("<input type=\"text\" class=\"form-control\" id=\"dni\" name=\"dni\" required>");
@@ -144,8 +148,8 @@ public class BasicAPI {
         return html.toString();
     }
 
-    @PostMapping("/add-person")
-    public RedirectView addPerson(@RequestParam String dni, @RequestParam String name, @RequestParam String surnames, @RequestParam int age, @RequestParam String email) {
+    @PostMapping("/add-person-to-database")
+    public RedirectView addPerson(@RequestParam String dni, @RequestParam String name, @RequestParam String surnames, @RequestParam int age, @RequestParam String email, HttpSession session) {
         Person person = new Person();
         person.setDNI(dni);
         person.setName(name);
@@ -153,7 +157,11 @@ public class BasicAPI {
         person.setAge(age);
         person.setEmail(email);
         personRepository.save(person);
-        return new RedirectView("/api/people"); // Redirigir a la lista de personas después de guardar
+
+        // Recuperar las credenciales desde la sesión
+        String user = (String) session.getAttribute("user");
+        String passwd = (String) session.getAttribute("passwd");
+        return new RedirectView("/api/people?user=" + user + "&passwd=" + passwd); // Redirigir a la lista de personas después de guardar
     }
 
     @GetMapping("/update-person")
@@ -200,7 +208,7 @@ public class BasicAPI {
                             @RequestParam String name, 
                             @RequestParam String surnames, 
                             @RequestParam int age, 
-                            @RequestParam String email) {
+                            @RequestParam String email, HttpSession session) {
         Person person = personRepository.findById(id)
             .orElseThrow(() -> new IllegalArgumentException("Invalid person ID: " + id));
 
@@ -212,7 +220,11 @@ public class BasicAPI {
 
         personRepository.save(person); // Guarda la entidad actualizada en la base de datos
 
-        return new RedirectView("/api/people"); // Redirige a la lista de personas después de actualizar
+        // Recuperar las credenciales desde la sesión
+        String user = (String) session.getAttribute("user");
+        String passwd = (String) session.getAttribute("passwd");
+
+        return new RedirectView("/api/people?user=" + user + "&passwd=" + passwd); // Redirigir a la lista de personas después de guardar
     }
     
 }
